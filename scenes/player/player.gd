@@ -1,7 +1,7 @@
 extends RigidBody3D
 
-const MOVE_SPEED = 50.0
-const TURN_SPEED = 150
+@export var MOVE_SPEED = 50.0
+@export var TURN_SPEED = 150
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
