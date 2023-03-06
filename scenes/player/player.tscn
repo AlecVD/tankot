@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://be5bb508ygwlo"]
 
-[ext_resource type="Material" uid="uid://bo2tq65ltf4w8" path="res://assets/prototyping/prototype_dark.tres" id="1_3jkdl"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_521u5"]
+[ext_resource type="Material" uid="uid://yaynr845kreg" path="res://assets/prototyping/prototype_light.tres" id="2_a5b5t"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_my2vy"]
 size = Vector3(0.8, 0.5, 1)
@@ -10,11 +10,12 @@ size = Vector3(0.8, 0.5, 1)
 points = PackedVector3Array(0.4, 0.25, 0.5, 0.4, -0.25, 0.5, 0.4, 0.25, -0.5, -0.4, 0.25, 0.5, -0.4, -0.25, 0.5, 0.4, -0.25, -0.5, -0.4, 0.25, -0.5, -0.4, -0.25, -0.5)
 
 [node name="Player" type="RigidBody3D"]
+axis_lock_angular_y = true
 script = ExtResource("1_521u5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_my2vy")
-surface_material_override/0 = ExtResource("1_3jkdl")
+surface_material_override/0 = ExtResource("2_a5b5t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_44aa6")

@@ -14,4 +14,3 @@ rim = 0.0
 anisotropy = 0.47
 uv1_offset = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 uv1_triplanar = true
-uv1_world_triplanar = true

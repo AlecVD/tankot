@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 const MOVE_SPEED = 50.0
-const TURN_SPEED = 100
+const TURN_SPEED = 150
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -9,10 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	linear_damp = 10.0
 	
-	
 func _physics_process(delta):
-
-	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move_dir = 0
 	var turn_dir = 0
@@ -27,7 +24,7 @@ func _physics_process(delta):
 	
 	rotation_degrees.y += turn_dir * TURN_SPEED * delta
 	var move_vec = global_transform.basis.z * MOVE_SPEED * move_dir
-	move_vec.y = 0.0
+	#move_vec.y = 0.0
 	#print(move_vec)
 	apply_central_force(move_vec)
 	
