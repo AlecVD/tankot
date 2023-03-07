@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://brpgxv62potvd"]
+
+[ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_tdvkw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0km3"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hdinq"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gha7o"]
+radius = 0.25
+
+[node name="Bullet" type="RigidBody3D"]
+axis_lock_linear_y = true
+physics_material_override = SubResource("PhysicsMaterial_x0km3")
+script = ExtResource("1_tdvkw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_hdinq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gha7o")

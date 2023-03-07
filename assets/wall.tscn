@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8m61wp3xqdqp"]
+
+[ext_resource type="Material" uid="uid://yaynr845kreg" path="res://assets/prototyping/prototype_light.tres" id="1_ljtah"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_01i0x"]
+size = Vector3(2, 2, 0.25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rsgsb"]
+data = PackedVector3Array(-1, 1, 0.125, 1, 1, 0.125, -1, -1, 0.125, 1, 1, 0.125, 1, -1, 0.125, -1, -1, 0.125, 1, 1, -0.125, -1, 1, -0.125, 1, -1, -0.125, -1, 1, -0.125, -1, -1, -0.125, 1, -1, -0.125, 1, 1, 0.125, 1, 1, -0.125, 1, -1, 0.125, 1, 1, -0.125, 1, -1, -0.125, 1, -1, 0.125, -1, 1, -0.125, -1, 1, 0.125, -1, -1, -0.125, -1, 1, 0.125, -1, -1, 0.125, -1, -1, -0.125, 1, 1, 0.125, -1, 1, 0.125, 1, 1, -0.125, -1, 1, 0.125, -1, 1, -0.125, 1, 1, -0.125, -1, -1, 0.125, 1, -1, 0.125, -1, -1, -0.125, 1, -1, 0.125, 1, -1, -0.125, -1, -1, -0.125)
+
+[node name="Wall" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_01i0x")
+skeleton = NodePath("../Camera3D")
+surface_material_override/0 = ExtResource("1_ljtah")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_rsgsb")
