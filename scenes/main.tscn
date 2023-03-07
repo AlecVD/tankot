@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://bthjeatsgmplh"]
+[gd_scene load_steps=16 format=3 uid="uid://bthjeatsgmplh"]
 
-[ext_resource type="Material" uid="uid://yaynr845kreg" path="res://assets/prototyping/prototype_light.tres" id="1_5u7qy"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_oc246"]
 [ext_resource type="Texture2D" uid="uid://dkq73jq6viaxc" path="res://assets/Wood083B_4K-JPG/Wood083B_4K_Color.jpg" id="2_7bn72"]
 [ext_resource type="PackedScene" uid="uid://be5bb508ygwlo" path="res://scenes/player/player.tscn" id="3_jo3yr"]
@@ -8,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://catm3b61sgi7v" path="res://assets/Wood083B_4K-JPG/Wood083B_4K_NormalGL.jpg" id="3_q16gk"]
 [ext_resource type="Texture2D" uid="uid://bbwv0l7syqws4" path="res://assets/Wood083B_4K-JPG/Wood083B_4K_Roughness.jpg" id="4_c46m0"]
 [ext_resource type="Script" path="res://scenes/Hud.gd" id="4_k5iqa"]
+[ext_resource type="PackedScene" uid="uid://dr1lo3ys17u15" path="res://assets/box.tscn" id="8_c7lfc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vonio"]
 sky_top_color = Color(0.486275, 0.745098, 0.984314, 1)
@@ -40,9 +40,27 @@ uv1_triplanar = true
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5wwtv"]
 data = PackedVector3Array(-50, 0.25, 50, 50, 0.25, 50, -50, -0.25, 50, 50, 0.25, 50, 50, -0.25, 50, -50, -0.25, 50, 50, 0.25, -50, -50, 0.25, -50, 50, -0.25, -50, -50, 0.25, -50, -50, -0.25, -50, 50, -0.25, -50, 50, 0.25, 50, 50, 0.25, -50, 50, -0.25, 50, 50, 0.25, -50, 50, -0.25, -50, 50, -0.25, 50, -50, 0.25, -50, -50, 0.25, 50, -50, -0.25, -50, -50, 0.25, 50, -50, -0.25, 50, -50, -0.25, -50, 50, 0.25, 50, -50, 0.25, 50, 50, 0.25, -50, -50, 0.25, 50, -50, 0.25, -50, 50, 0.25, -50, -50, -0.25, 50, 50, -0.25, 50, -50, -0.25, -50, 50, -0.25, 50, 50, -0.25, -50, -50, -0.25, -50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bf13s"]
+[sub_resource type="GDScript" id="GDScript_ignmf"]
+script/source = "extends MultiMeshInstance3D
+@onready var box = preload(\"res://assets/box.tscn\")
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in 5:
+		for j in 5:
+			var new = box.instantiate()
+			#new.freeze = true
+			new.position = Vector3(i*.5,j*.25,-4)
+			add_child(new)	
+	
+	#for a in get_children():
+	#	a.freeze = false
+	pass # Replace with function body.
 
-[sub_resource type="BoxMesh" id="BoxMesh_4cel4"]
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_oc246")
@@ -66,22 +84,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ypsw2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5wwtv")
 
-[node name="Box" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4681, -3.48305)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
-shape = SubResource("BoxShape3D_bf13s")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
-mesh = SubResource("BoxMesh_4cel4")
-surface_material_override/0 = ExtResource("1_5u7qy")
-
 [node name="Player" parent="." instance=ExtResource("3_jo3yr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 axis_lock_angular_y = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 2.08165e-12, 7.22611, -0.104674)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 2.08165e-12, 7.85853, -1.14079)
 
 [node name="Hud" type="Control" parent="."]
 layout_mode = 3
@@ -94,3 +102,9 @@ script = ExtResource("4_k5iqa")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Box" parent="." instance=ExtResource("8_c7lfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61498, 0.5, -2.11605)
+
+[node name="Pyramid" type="MultiMeshInstance3D" parent="."]
+script = SubResource("GDScript_ignmf")
