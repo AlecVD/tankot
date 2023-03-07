@@ -10,12 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://b8m61wp3xqdqp" path="res://assets/wall.tscn" id="6_57qfi"]
 [ext_resource type="PackedScene" uid="uid://dr1lo3ys17u15" path="res://assets/box.tscn" id="8_c7lfc"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vonio"]
-sky_top_color = Color(0.486275, 0.745098, 0.984314, 1)
-ground_bottom_color = Color(0.415686, 0.360784, 0.298039, 1)
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_vqlpa"]
+ground_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Sky" id="Sky_xd03i"]
-sky_material = SubResource("ProceduralSkyMaterial_vonio")
+sky_material = SubResource("PhysicalSkyMaterial_vqlpa")
 
 [sub_resource type="Environment" id="Environment_wfdok"]
 background_mode = 2
