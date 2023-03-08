@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5hpv4i6lngc7"]
+
+[ext_resource type="Material" uid="uid://yaynr845kreg" path="res://assets/prototyping/prototype_light.tres" id="1_3i68p"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ut2le"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8e3ku"]
+size = Vector3(0.8, 0.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lg5ai"]
+points = PackedVector3Array(-0.395554, -0.25, -0.492544, 0.377056, 0.25, 0.477246, 0.362095, 0.25, 0.477152, -0.395554, -0.25, 0.492544, 0.389244, -0.25, -0.492544, -0.383292, 0.25, -0.477152, 0.389244, -0.25, 0.492544, 0.377056, 0.25, -0.477246, -0.383292, 0.25, 0.477152)
+
+[node name="Enemy" type="RigidBody3D"]
+max_contacts_reported = 100
+contact_monitor = true
+script = ExtResource("1_ut2le")
+health = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8e3ku")
+surface_material_override/0 = ExtResource("1_3i68p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_lg5ai")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -16,6 +16,8 @@ radius = 0.25
 [node name="Bullet" type="RigidBody3D"]
 axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_x0km3")
+max_contacts_reported = 100
+contact_monitor = true
 script = ExtResource("1_tdvkw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -23,3 +25,5 @@ mesh = SubResource("SphereMesh_hdinq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_gha7o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
