@@ -44,9 +44,9 @@ script/source = "extends MultiMeshInstance3D
 @onready var box = preload(\"res://assets/box.tscn\")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 5:
-		for j in 5:
-			for k in 5:
+	for i in 10:
+		for j in 10:
+			for k in 10:
 				var new = box.instantiate()
 				#new.freeze = true
 				new.position = Vector3(i*0.5,j*0.25,k*0.5)
