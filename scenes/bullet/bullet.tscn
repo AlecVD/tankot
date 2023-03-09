@@ -7,11 +7,11 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_hdinq"]
-radius = 0.1
-height = 0.2
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gha7o"]
-radius = 0.1
+radius = 0.2
 
 [node name="Bullet" type="RigidBody3D"]
 axis_lock_linear_y = true
