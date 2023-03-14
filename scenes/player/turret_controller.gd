@@ -19,7 +19,7 @@ func _process(delta):
 	var ray = PhysicsRayQueryParameters3D.create(from,to)
 	var intersection = get_world_3d().direct_space_state.intersect_ray(ray)
 	#print(intersection)
-	intersection.position.y = position.y
+	#intersection.position.y = position.y
 	var pre_rotationY = rotation.x
 	look_at(intersection.position,Vector3.UP)
 	rotation.x = pre_rotationY

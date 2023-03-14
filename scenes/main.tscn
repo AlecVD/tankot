@@ -44,9 +44,9 @@ script/source = "extends MultiMeshInstance3D
 @onready var box = preload(\"res://assets/box.tscn\")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in 10:
-		for j in 10:
-			for k in 10:
+	for i in 5:
+		for j in 5:
+			for k in 1:
 				var new = box.instantiate()
 				#new.freeze = true
 				new.position = Vector3(i*0.5,j*0.25,k*0.5)
@@ -55,7 +55,6 @@ func _ready():
 	#for a in get_children():
 	#	a.freeze = false
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -97,9 +96,6 @@ axis_lock_angular_y = false
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10, -1)
 current = true
-
-[node name="AltCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.969663, 0.244444, 0, -0.244444, 0.969663, 0, 1.35701, 5.00958)
 
 [node name="Hud" type="Control" parent="."]
 layout_mode = 3
